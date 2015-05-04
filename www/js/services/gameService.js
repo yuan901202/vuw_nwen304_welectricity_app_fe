@@ -3,9 +3,16 @@
  */
 angular.module('welc.services', [])
     .service('GameService', [function () {
+        var running = false;
 
-        this.start = function() {
-            alert('Game Started');
-        }
+        this.start = function () {
+            running = true;
+            console.log('Game is starting');
+        };
+
+        this.pause = function () {
+            running = false;
+            console.log('Game is pausing');
+        };
     }])
 ;
