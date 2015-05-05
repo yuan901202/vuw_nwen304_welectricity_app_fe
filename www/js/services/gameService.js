@@ -17,7 +17,11 @@ angular.module('welc.services', [])
             if (powerPlantIndex > -1) {
                 powerPlants.splice(powerPlantIndex, 1);
             }
-        }
+        };
+
+        this.getPowerPlants = function () {
+            return powerPlants;
+        };
 
         this.start = function () {
             running = true;
