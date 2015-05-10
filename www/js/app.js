@@ -21,9 +21,9 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services'])
     .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
 
-        $stateProvider.state('home', {
+        $stateProvider.state('titlePage', {
             url: '/',
-            templateUrl: 'templates/main.html',
-            controller: 'HomeCtrl'
+            templateUrl: 'templates/pages/titlePage.html',
+            controller: 'TitlePageCtrl'
         });
     }]);
