@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('welc', ['ionic', 'welc.controllers', 'welc.services'])
 
-    .run(function ($ionicPlatform) {
+    .run(['$ionicPlatform', '$rootScope', '$state', function ($ionicPlatform, $rootScope, $state) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -15,15 +15,23 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services'])
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
+
+            $rootScope.$state = $state;
         });
-    })
+    }])
 
     .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
 
-        $stateProvider.state('titlePage', {
-            url: '/',
-            templateUrl: 'templates/pages/titlePage.html',
-            controller: 'TitlePageCtrl'
-        });
+        $stateProvider
+            .state('titlePage', {
+                url: '/',
+                templateUrl: 'templates/pages/titlePage.html',
+                controller: 'TitlePageCtrl'
+            })
+            .state('gamePlay', {
+                url: '/gamePlay',
+                templateUrl: 'templates/pages/gamePlay.html',
+                controller: 'GamePlayCtrl'
+            })
     }]);
