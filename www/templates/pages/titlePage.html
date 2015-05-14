@@ -1,6 +1,11 @@
 <ion-view>
     <ion-content>
-        <h1>{{msg}}</h1>
-        <button type="button" ng-click="$state.go('gamePlay')">Start Game</button>
+    <div id="titlebg"> <img id= "bgbg" src = '{{titlebackground}}'> </div>
+        
+        <div id = "firstb"> <button id= "oneb" type="button" ng-click="$state.go('gamePlay')"> START GAME </button> </div>
+        <div id = "secondb"> <button  id = "twob" type="button" ng-click="$state.go('gamePlay')"> TUTORIAL </button> </div>
+        <div id = "thirdb"> <button id = "threeb" type="button" ng-click="$state.go('gamePlay')"> MORE INFO </button> </div>
+
+
     </ion-content>
 </ion-view>
