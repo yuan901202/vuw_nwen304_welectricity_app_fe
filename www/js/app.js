@@ -34,4 +34,9 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                 templateUrl: 'templates/pages/gamePlay.html',
                 controller: 'GamePlayCtrl'
             })
+            .state('cityView', {
+                url: '/cityView',
+                templateUrl: 'templates/pages/cityView.html',
+                controller: 'CityViewCtrl'
+            })
     }]);
