@@ -9,98 +9,38 @@
 }
 
 #titlebg {
-
-	position:fixed; 
-	z-index: -2;
+    position: fixed;
+    z-index: -2;
 }
 
 #bgbg {
-top:0; 
- left:0; 
- height:auto;
- min-height: 667px;
- max-height: 100%;
- min-width: 375px;
- max-width: 100%;
+    top: 0;
+    left: 0;
+    height: auto;
+    min-height: 667px;
+    max-height: 100%;
+    min-width: 375px;
+    max-width: 100%;
 
 }
 
-#firstb {
-  vertical-align: middle;
-  text-align: center;
-  margin: 0 auto;
-position:absolute;
-top:52%;
-left: 48%;
-
+.title_button {
+    background-color: transparent;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Futura;
+    font-size: 40px;
+    text-decoration: none;
+    margin: 0 auto;
+    border: 0px;
+    position: relative;
+    float: right;
+    clear: both;
 }
 
-#secondb {
-  vertical-align: middle;
-  text-align: center;
-  margin: 0 auto;
-
-position:absolute;
-top:60%;
-left: 48%;
-
-
-}
-
-#thirdb {
-  vertical-align: middle;
-  text-align: center;
-  margin: 0 auto;
-
-  position:absolute;
-top:68%;
-left: 48%;
-
-}
-
-#oneb {
-background-color:transparent;
-display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Futura;
-	font-size:40px;
-	text-decoration:none;
-	margin: 0 auto;
-	border:0px;
-	 position:relative;
-	 
-
-}
-
-#twob {
-background-color:transparent;
-display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Futura;
-	font-size:40px;
-	text-decoration:none;
-	margin: 0 auto;
-	border:0px;
-	
-
-	
-}
-
-#threeb {
-background-color:transparent;
-display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Futura;
-	font-size:40px;
-	margin: 0 auto;
-	text-decoration:none;
-	border:0px;
-	 position:relative;
-	 
-
-
-	
+.title_button_group {
+    position: relative;
+    top: 200px;
+    float: right;
 }
