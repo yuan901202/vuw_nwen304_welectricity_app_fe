@@ -8,12 +8,12 @@
     height: 55px;
 }
 
-#titlebg {
+.title_bg {
     position: fixed;
     z-index: -2;
 }
 
-#bgbg {
+.title_bg_img {
     top: 0;
     left: 0;
     height: auto;

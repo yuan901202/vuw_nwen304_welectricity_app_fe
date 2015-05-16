@@ -1,6 +1,4 @@
 angular.module('welc.controllers', [])
-    .controller('TitlePageCtrl', ['$scope', 'GameService', '$timeout', function ($scope, GameService, $timeout) {
-        $scope.msg = 'Hello World';
-        $scope.titlebackground = 'img/hey.gif';
+    .controller('TitlePageCtrl', ['$scope', 'GameService', '$timeout', function ($scope) {
 
     }]);
