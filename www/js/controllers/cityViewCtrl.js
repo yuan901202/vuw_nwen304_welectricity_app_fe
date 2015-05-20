@@ -3,6 +3,6 @@
  */
 
 angular.module('welc.controllers', [])
-    .controller('CityViewCtrl', ['$scope', 'GameService', '$timeout', function ($scope, GameService, $timeout) {
-        $scope.msg = 'City Viewer';
+    .controller('CityViewCtrl', ['$scope', function ($scope) {
+
     }]);
