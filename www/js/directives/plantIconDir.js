@@ -1,7 +1,7 @@
 /**
  * Created by John on 10/05/2015.
  */
-angular.module('welc.directives', [])
+angular.module('welc.directives')
 .directive('plantBar', function () {
         return {
             scope: {

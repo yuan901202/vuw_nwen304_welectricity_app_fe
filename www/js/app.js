@@ -1,5 +1,10 @@
 // Ionic Starter App
 
+//Create our app wide modules
+angular.module('welc.controllers', []);
+angular.module('welc.services', []);
+angular.module('welc.directives', []);
+
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -32,5 +37,10 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                 url: '/gamePlay',
                 templateUrl: 'templates/pages/gamePlay.html',
                 controller: 'GamePlayCtrl'
+            })
+            .state('cityView', {
+                url: '/cityView',
+                templateUrl: 'templates/pages/cityView.html',
+                controller: 'CityViewCtrl'
             })
     }]);

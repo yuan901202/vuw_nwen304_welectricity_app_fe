@@ -1,7 +1,7 @@
 /**
  * Created by John on 5/05/2015.
  */
-angular.module('welc.services', [])
+angular.module('welc.services')
     .service('GameService', ['$interval', function ($interval) {
         var running = false;
         var pollution = 0;  //Should be between 0 - 100
