@@ -6,6 +6,7 @@
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
@@ -47,10 +48,43 @@
 <body ng-app="welc">
 
 <ion-pane>
-    <ion-header-bar class="bar-stable">
-        <h1 class="title">Welectricity</h1>
-        <button class="button button-icon icon ion-navicon" ng-click="openPop"></button>
-    </ion-header-bar>
+    <!--Header code start-->
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!--header content-->
+                <a href="#" class="navbar-brand">Welectricity</a>
+
+                <!--Icon displayed when screen collapsed-->
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!---->
+                <div class="collapse navbar-collapse navHeaderCollapse">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <!--Header content-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Play <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" ng-click="$state.go('gamePlay')">Game Play</a></li>
+                                <li><a ng-click="$state.go('cityView')" href="#">City View</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Save</a></li>
+                                <li><a  ng-click="$state.go('titlePage')"href="#">Exit to Menu</a></li>
+                            </ul>
+                        </li>                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Header code end-->
     <ion-nav-view></ion-nav-view>
 </ion-pane>
 </body>
