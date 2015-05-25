@@ -41,6 +41,22 @@
 
 .title_button_group {
     position: relative;
-    top: 200px;
-    float: right;
+    top: 270px;
+    text-align: center;
+}
+
+.darkClass
+{
+    background-color: black;
+    filter:alpha(opacity=50); /* IE */
+    opacity: 0.5; /* Safari, Opera */
+    -moz-opacity:0.50; /* FireFox */
+    z-index: -20;
+    height: 100%;
+    width: 100%;
+    background-repeat:no-repeat;
+    background-position:center;
+    position:absolute;
+    top: 0px;
+    left: 0px;
 }
