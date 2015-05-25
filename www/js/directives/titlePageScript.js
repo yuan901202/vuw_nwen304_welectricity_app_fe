@@ -7,6 +7,11 @@ angular.module('welc.directives')
             link: function link(scope, element, atttr) {
                 //All javascript for title page goes here
 
+                $(document).ready(function() {
+                   $('.darkClass').each(function(fadeInDiv){
+                     $(this).delay(12000).fadeIn(200);
+                   });
+                });
             }
         }
     });
