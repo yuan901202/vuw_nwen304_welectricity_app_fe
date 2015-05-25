@@ -6,8 +6,6 @@ angular.module('welc.directives')
         return {
             link: function link(scope, element, atttr) {
                 //All javascript for gameplay page goes here
-
-                sayHello(); //Can even link to functions in different files
             }
         }
     });
