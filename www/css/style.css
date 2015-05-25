@@ -7,3 +7,10 @@
 .bar-footer {
     height: 55px;
 }
+
+/*cityView.html parallax image positioning*/
+.WEParallax {
+	position: absolute;
+	top: -50px;
+	left: -50px;
+}
