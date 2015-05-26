@@ -4,6 +4,7 @@
 angular.module('welc.directives')
     .directive('plantDrop', function () {
         return {
+            scope: {},
             templateUrl: 'templates/plantDrop.html'
         }
     });
