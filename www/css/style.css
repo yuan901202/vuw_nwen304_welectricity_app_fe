@@ -14,8 +14,9 @@
 /*cityView.html parallax image positioning*/
 .WEParallax {
     position: absolute;
-    top: -50px;
-    left: -50px;
+    /*top: -50px;
+    left: -50px;*/
+    height: 100vh;
 }
 
 /* Used for the power plant droppable placeholder */
