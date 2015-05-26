@@ -7,6 +7,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -48,7 +49,34 @@
 
 <ion-pane>
     <ion-header-bar class="bar-stable">
-        <h1 class="title">Welectricity</h1></ion-header-bar>
+        <div class="h1 title">Welectricity</div>
+        <!--<button class="button icon ion-navicon" ng-click="popover.show($event)"></button>-->
+        <div class="buttons">
+
+            <!-- Views -->
+            <div>
+                <button class="button button-icon ion-ios-navigate-outline dropdown-toggle dropdown " data-toggle="dropdown">
+                    <!--<i class="ion-ios-navigate-outline navbar-icon-resize"></i>-->
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#" ng-click="$state.go(&apos;gamePlay&apos;)">Game Play</a></li>
+                    <li><a ng-click="$state.go(&apos;cityView&apos;)" href="#">City View</a></li>
+                </ul>
+            </div>
+
+            <!-- Settings -->
+            <div>
+                <button class="button button-icon ion-android-settings dropdown-toggle dropdown " data-toggle="dropdown">
+                    <!--<i class="ion-ios-navigate-outline navbar-icon-resize"></i>-->
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">Save</a></li>
+                    <li><a ng-click="$state.go(&apos;titlePage&apos;)" href="#">Exit to Menu</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </ion-header-bar>
     <ion-nav-view></ion-nav-view>
 </ion-pane>
 </body>

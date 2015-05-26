@@ -71,10 +71,13 @@
 
 /*cityView.html parallax image positioning*/
 .WEParallax {
-    position: absolute;
-    top: -50px;
-    left: -50px;
+    width: 105%;
 }
+
+/*.layer, .WEParallax {*/
+    /*margin-left: -30px;*/
+    /*margin-top: -30px;*/
+/*}*/
 
 /* Used for the power plant droppable placeholder */
 .empty_drop {
