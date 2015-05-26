@@ -1,4 +1,4 @@
 <div class="power_plant_bar">
-    <img class="plant_icon" ng-repeat="powerPlant in powerPlants" ng-src="{{powerPlant.image}}"
-         alt="{{powerPlant.name}}">
+    <img class="plant_icon" ng-repeat="powerPlant in powerPlants track by $index" ng-src="{{powerPlants[$index].image}}" ng-model="powerPlants[$index]"
+         alt="{{powerPlants[$index].name}}" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{ placeholder: 'keep'}">
 </div>
