@@ -71,7 +71,10 @@
 
 /*cityView.html parallax image positioning*/
 .WEParallax {
-    width: 105%;
+    position: absolute;
+    /*top: -50px;
+    left: -50px;*/
+    height: 100vh;
 }
 
 /*.layer, .WEParallax {*/
@@ -105,4 +108,7 @@
     position: absolute;
     top: 500px;
     left: 250px;
+}
+.navbar-icon-resize {
+	font-size: 25px;
 }
