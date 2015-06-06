@@ -56,6 +56,10 @@ angular.module('welc.services')
             console.log("Game calculating......");
         };
 
+        /**
+         * Calculate the total electricity produced from power plants
+         * @returns {number}
+         */
         function calculatePowerGeneration() {
             var totalPowerGen = 0;
 
