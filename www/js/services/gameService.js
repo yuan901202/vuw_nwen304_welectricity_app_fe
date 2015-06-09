@@ -16,7 +16,7 @@ angular.module('welc.services')
          * Return all power plants in the game
          * @returns {*}
          */
-        this.getPlants = function() {
+        this.getPlants = function () {
             return powerPlants;
         };
 
@@ -24,8 +24,19 @@ angular.module('welc.services')
          * Add a power plant to the game
          * @param plant - The power plant to add
          */
-        this.addPlant = function(plant) {
+        this.addPlant = function (plant) {
             powerPlants.push(plant);
+        };
+
+        /**
+         * Remove a power plant from the game. Will not remove from game if plant is not in game.
+         * @param plant - The plant to remove
+         */
+        this.removePlant = function (plant) {
+            var index = powerPlants.indexOf(plant);
+            if (index > -1) {    //Check that the plant is in the game already
+                powerPlants.splice(index, 1);
+            }
         };
 
         /**
