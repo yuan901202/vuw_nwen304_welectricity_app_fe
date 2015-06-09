@@ -1,6 +1,13 @@
 <ion-view title-page-script="">
     <ion-content>
-        <h1>{{msg}}</h1>
-        <button type="button" ng-click="$state.go('gamePlay')">Start Game</button>
+        <div class="title_bg"><img class="title_bg_img" src='img/title_page.gif'></div>
+
+        <div class="title_button_group">
+            <button class="title_button" type="button" ng-click="$state.go('gamePlay')"> START GAME</button>
+            <button class="title_button" type="button"> TUTORIAL</button>
+            <button class="title_button" type="button"> MORE INFO</button>
+        </div>
+
+        <div class="darkClass"></div>
     </ion-content>
 </ion-view>

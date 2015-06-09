@@ -4,6 +4,7 @@
 angular.module('welc.directives')
     .directive('plantDrop', ['GameService', function (GameService) {
         return {
+            scope:{},
             templateUrl: 'templates/plantDrop.html',
             link: function link(scope, element, attrs) {
 
