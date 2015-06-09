@@ -10,4 +10,6 @@ angular.module('welc.controllers')
             {name: 'Solar', image: 'img/powerPlants/Solar.png'},
             {name: 'Hydro', image: 'img/powerPlants/Nuclear.png'}
         ];
+
+        $scope.gamePlants = GameService.getPlants();
     }]);

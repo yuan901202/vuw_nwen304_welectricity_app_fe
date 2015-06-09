@@ -1,4 +1,4 @@
-<div class="plant_icon power_plant_holder" data-drop="true" jqyoui-droppable="" ng-model="droppedPlant" ng-class="{empty_drop: !droppedPlant}">
+<div class="plant_icon power_plant_holder" data-drop="true" jqyoui-droppable="{onDrop: 'drop'}" ng-model="droppedPlant" ng-class="{empty_drop: !droppedPlant}">
     <img ng-if="droppedPlant" class="plant_icon" ng-src="{{droppedPlant.image}}"
          alt="{{droppedPlant.name}}">
 </div>

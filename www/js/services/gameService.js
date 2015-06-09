@@ -10,6 +10,24 @@ angular.module('welc.services')
         var stepInterval = 2000;    //Run game logic every 1000 milliseconds
         var interval;   //This is the interval promise which will run the game
 
+        var powerPlants = [];
+
+        /**
+         * Return all power plants in the game
+         * @returns {*}
+         */
+        this.getPlants = function() {
+            return powerPlants;
+        };
+
+        /**
+         * Add a power plant to the game
+         * @param plant - The power plant to add
+         */
+        this.addPlant = function(plant) {
+            powerPlants.push(plant);
+        };
+
         /**
          * Start running the game
          */
