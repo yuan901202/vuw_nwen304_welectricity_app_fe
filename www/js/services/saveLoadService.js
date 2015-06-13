@@ -16,10 +16,6 @@ angular.module('welc.services')
             return $http.post(host, game).then(function (data) {
                 //Saved successfully
                 return data;
-            }, function (data) {
-                //Something went wrong
-                console.log(data);
-                return data;
             });
         };
 
