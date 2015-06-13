@@ -3,26 +3,37 @@
  */
 angular.module('welc.services')
     .service('saveLoadService', ['$http', function ($http) {
-        var host = "";  //The location of the server that has the data
+        var host = "https://guarded-earth-8421.herokuapp.com/game";  //The location of the server that has the data
 
-        function saveGame(population, pollution, powerDemand, powerPlants) {
-
+        /**
+         * Save a game to the server
+         * @param game - The game object to save
+         */
+        function saveGame(game) {
             //This is the game that is going to be sent to the backend to be saved
-            var game = {population: population, pollution: pollution, power_demand: powerDemand, plants: powerPlants};
+            game.user_id = 1;   //TODO this needs to be set when loading user info is complete
 
-            $http.post(host, game).then(function(){
+            return $http.post(host, game).then(function (data) {
                 //Saved successfully
-            }, function() {
+                return data;
+            }, function (data) {
                 //Something went wrong
+                console.log(data);
+                return data;
             });
         };
 
+        /**
+         * Load a game from the server
+         * @returns {*}
+         */
         function loadGame() {
-            return $http.post(host).then(function(game){
+            return $http.get(host, {user_id: 1}).then(function (game) {
                 //Saved successfully
                 return game;
-            }, function() {
+            }, function (error) {
                 //Something went wrong
+                return error;
             });
         };
 

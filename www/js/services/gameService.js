@@ -12,6 +12,11 @@ angular.module('welc.services')
 
         var powerPlants = [];
 
+        this.getGame = function(){
+            var powerDemand = 10000;
+            return {population: population, pollution: pollution, power_demand: powerDemand, plants: powerPlants};
+        };
+
         /**
          * Return all power plants in the game
          * @returns {*}

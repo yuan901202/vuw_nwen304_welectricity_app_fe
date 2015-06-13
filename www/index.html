@@ -34,9 +34,11 @@
     <script src="js/controllers/titlePageCtrl.js"></script>
     <script src="js/controllers/gamePlayCtrl.js"></script>
     <script src="js/controllers/cityViewCtrl.js"></script>
+    <script src="js/controllers/navCtrl.js"></script>
 
     <!-- services and directives -->
     <script src="js/services/gameService.js"></script>
+    <script src="js/services/saveLoadService.js"></script>
 
     <script src="js/directives/plantIconDir.js"></script>
     <script src="js/directives/gamePlayScript.js"></script>
@@ -49,7 +51,7 @@
 <body ng-app="welc">
 
 <ion-pane>
-    <ion-header-bar class="bar-stable">
+    <ion-header-bar class="bar-stable" ng-controller="NavCtrl">
         <div class="h1 title">Welectricity</div>
         <!--<button class="button icon ion-navicon" ng-click="popover.show($event)"></button>-->
         <div class="buttons">
@@ -71,7 +73,7 @@
                     <!--<i class="ion-ios-navigate-outline navbar-icon-resize"></i>-->
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="#">Save</a></li>
+                    <li><a href="#" ng-click="saveGame()">Save</a></li>
                     <li><a ng-click="$state.go(&apos;titlePage&apos;)" href="#">Exit to Menu</a></li>
                 </ul>
             </div>
