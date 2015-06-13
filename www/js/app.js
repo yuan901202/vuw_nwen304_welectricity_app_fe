@@ -31,7 +31,7 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
             $rootScope.$on('$stateChangeSuccess', function() {
                 $timeout(function() {
                     $ionicLoading.hide();
-                }, 250);
+                }, 500);
             })
         });
     }])
