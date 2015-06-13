@@ -10,11 +10,15 @@ angular.module('welc.services')
         var stepInterval = 2000;    //Run game logic every 1000 milliseconds
         var interval;   //This is the interval promise which will run the game
 
-        var powerPlants = [];
+        var powerPlants = [];   //All the power plants in the game
 
-        this.getGame = function(){
-            var powerDemand = 10000;
-            return {population: population, pollution: pollution, power_demand: powerDemand, plants: powerPlants};
+        /**
+         * Return the game as an object so that it can be saved.
+         * @returns {{population: number, pollution: number, power_demand: number, plants: Array}} - The current game as an object
+         */
+        this.getGame = function () {
+            var powerDemand = 10000;    //TODO This needs to be updated when the maths of how it works if complete
+            return {population: population, pollution: pollution, power_demand: powerDemand, plants: getPowerPlantIds()};
         };
 
         /**
@@ -70,5 +74,17 @@ angular.module('welc.services')
             //Need some fancy algorithm here to calculate all the game state based on the games variables
             console.log("Game calculating......");
         };
+
+        /**
+         * Get the ids of every power plant in the game.
+         * @returns {Array} - An array of all ids (integers) of all power plants in the game
+         */
+        function getPowerPlantIds() {
+            var ids = [];
+            for(var i = 0; i < powerPlants.length; i++) {
+                ids.push(powerPlants[i].id);
+            }
+            return ids;
+        }
     }])
 ;
