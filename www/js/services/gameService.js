@@ -22,6 +22,16 @@ angular.module('welc.services')
         };
 
         /**
+         * Set the game variables. This should only be used for loading (or cheating by the devs!)
+         * @param game - The game object to load into current game. Should be in the same format that the getGame function returns
+         */
+        this.setGame = function(game) {
+            population = game.population;
+            pollution = game.pollution;
+            powerPlants;    //TODO Load all power plants from a service based on there id. Waiting on service to load all power plants from server.
+        };
+
+        /**
          * Return all power plants in the game
          * @returns {*}
          */

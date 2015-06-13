@@ -9,7 +9,7 @@ angular.module('welc.services')
          * Save a game to the server
          * @param game - The game object to save
          */
-        function saveGame(game) {
+        this.saveGame = function (game) {
             //This is the game that is going to be sent to the backend to be saved
             game.user_id = 1;   //TODO this needs to be set when loading user info is complete
 
@@ -23,7 +23,7 @@ angular.module('welc.services')
          * Load a game from the server
          * @returns {*}
          */
-        function loadGame() {
+        this.loadGame = function () {
             return $http.get(host, {user_id: 1}).then(function (game) {
                 //Saved successfully
                 return game;
@@ -32,10 +32,5 @@ angular.module('welc.services')
                 return error;
             });
         };
-
-        return {
-            saveGame: saveGame,
-            loadGame: loadGame
-        }
     }])
 ;
