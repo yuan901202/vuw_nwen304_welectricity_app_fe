@@ -12,4 +12,5 @@ angular.module('welc.controllers')
         ];
 
         $scope.gamePlants = GameService.getPlants();
+        GameService.start();
     }]);

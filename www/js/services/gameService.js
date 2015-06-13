@@ -2,12 +2,12 @@
  * Created by John on 5/05/2015.
  */
 angular.module('welc.services')
-    .service('GameService', ['$interval', function ($interval) {
+    .service('GameService', ['$interval', 'saveLoadService', function ($interval, saveLoadService) {
         var running = false;
         var pollution = 0;  //Should be between 0 - 100
         var population = 100000; //Set initial population to 100, 000
 
-        var stepInterval = 2000;    //Run game logic every 1000 milliseconds
+        var stepInterval = 4000;    //Run game logic every 4000 milliseconds
         var interval;   //This is the interval promise which will run the game
 
         var powerPlants = [];   //All the power plants in the game
@@ -83,6 +83,9 @@ angular.module('welc.services')
         function stepGame() {
             //Need some fancy algorithm here to calculate all the game state based on the games variables
             console.log("Game calculating......");
+
+            //var powerDemand = 10000;    //TODO This needs to be updated when the maths of how it works if complete
+            //saveLoadService.saveGame({population: population, pollution: pollution, power_demand: powerDemand, plants: getPowerPlantIds()});
         };
 
         /**
