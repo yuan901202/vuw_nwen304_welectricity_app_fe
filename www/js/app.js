@@ -23,8 +23,13 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
 
             $rootScope.$state = $state;
 
+            //Save the game when the user exits the application
             document.addEventListener("pause", saveGame, false);
 
+            /**
+             * This function will save the game.
+             * Use an ajax request as ionic/ cordova will not allow $http on the pause event.
+             */
             function saveGame() {
                 var game = GameService.getGame();
                 game.user_id = 1;   //TODO get this from a service
