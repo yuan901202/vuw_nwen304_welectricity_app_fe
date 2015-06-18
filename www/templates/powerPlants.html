@@ -2,5 +2,5 @@
     <img class="plant_icon" ng-repeat="powerPlant in powerPlants track by $index" ng-src="{{powerPlants[$index].image}}"
          ng-model="powerPlants[$index]"
          alt="{{powerPlants[$index].name}}" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"
-         jqyoui-draggable="{ index: {{$index}}, placeholder: 'keep'}">
+         jqyoui-draggable="{ index: {{$index}}, placeholder: 'keep'}" plant="powerPlants[$index]" ng-click="popOver.toggle(powerPlants[$index])">
 </div>
