@@ -2,7 +2,7 @@
  * Created by John on 5/05/2015.
  */
 angular.module('welc.services')
-    .service('GameService', ['$interval', 'saveLoadService', function ($interval, saveLoadService) {
+    .service('GameService', ['$interval', 'saveLoadService', function ($interval) {
         var running = false;
         var pollution = 0;  //Should be between 0 - 100
         var population = 100000; //Set initial population to 100, 000
