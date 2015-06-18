@@ -2,7 +2,7 @@
  * Created by John on 13/06/2015.
  */
 angular.module('welc.services')
-    .service('saveLoadService', ['$http', function ($http) {
+    .service('saveLoadService', ['$http', 'userInfoService', function ($http, userInfoService) {
         var host = "https://guarded-earth-8421.herokuapp.com/game";  //The location of the server that has the data
 
         /**
@@ -11,7 +11,7 @@ angular.module('welc.services')
          */
         this.saveGame = function (game) {
             //This is the game that is going to be sent to the backend to be saved
-            game.user_id = 1;   //TODO this needs to be set when loading user info is complete
+            game.userId = userInfoService.getUserId();
 
             return $http.post(host, game).then(function (data) {
                 //Saved successfully
@@ -24,7 +24,8 @@ angular.module('welc.services')
          * @returns {*}
          */
         this.loadGame = function () {
-            return $http.get(host, {user_id: 1}).then(function (game) {
+            var userId = userInfoService.getUserId();
+            return $http.get(host, {user_id: userId}).then(function (game) {
                 //Saved successfully
                 return game;
             }, function (error) {
