@@ -4,25 +4,19 @@
 angular.module('welc.services')
     .service('GameService', ['$interval', function ($interval) {
         var running = false;
-        /*
-        var pollution = 0;  //Should be between 0 - 100
-        var population = 100000; //Set initial population to 100, 000
-        */
 
-        //-----Nicola's code start
         var population = 210000;
-		var pollution = 0;
-		var tempPopulation;
-		var cost = 500000;
-		var tempCost;
-		var energy;
-		var energyBase = 100000;
-		var fakeEnergyOutput = 10500;
-		var tempEnergy;
-		var reqEnery;
-		var energyDiff;
-		var energyFactor;
-		//-----Nicola's code end
+        var pollution = 0;
+        var tempPopulation;
+        var cost = 500000;
+        var tempCost;
+        var energy;
+        var energyBase = 100000;
+        var fakeEnergyOutput = 10500;
+        var tempEnergy;
+        var reqEnery;
+        var energyDiff;
+        var energyFactor;
 
         var stepInterval = 2000;    //Run game logic every 1000 milliseconds
         var interval;   //This is the interval promise which will run the game
@@ -80,74 +74,84 @@ angular.module('welc.services')
          */
         function stepGame() {
             //Need some fancy algorithm here to calculate all the game state based on the games variables
-            //-----Nicola's code start
-            pollutionCount();
+            pollution = pollutionCount();
+
             energyCount();
-			populationCount();
-			costCount();
-			update();
-			//-----Nicola's code end
-            console.log("Game calculating......");
+            populationCount();
+            costCount();
+            update();
         };
 
 
-        //-----Nicola's code start
-        function pollutionCount(){
-			//pollution = (power plant array pollution code here)
-		}
+        /**
+         * Returns the total pollution generated for all power plants
+         * @returns {number}
+         */
+        function pollutionCount() {
+            //pollution = (power plant array pollution code here)
+            var totalPollution = 0;
 
-		function energyCount(){
-			//Energy Output
-		    //Energy increases based on:
-		    //Replace fakeEnergyOutput with the total energy output of power sources
-		    energy = energyBase + fakeEnergyOutput + (Math.random() * 100);
-		    //energy = energyBase + (POWER PLANT "energyOutput") + (Math.random() * 100);
+            for(var i = 0; i < powerPlants.length; i++) {
+                pollution += powerPlants[i].pollution;
+            }
 
-		    //Do we have enough energy?
-		    reqEnergy = (population * 0.5);
-		    //Calculate energy difference for calculating population
-		    energyDiff = energy - reqEnergy;
-		    //console.log("energy " + energy);
-		    //console.log("req energy " + reqEnergy);
-		    //console.log("energyDiff " + energyDiff);
-		}
+            return pollution;
+        }
 
-		function populationCount(){
-			//Population
-		    //Calculate the rate that the population changes by
+        function energyCount() {
+            //Energy Output
+            //Energy increases based on:
+            //Replace fakeEnergyOutput with the total energy output of power sources
+            energy = energyBase + fakeEnergyOutput + (Math.random() * 100);
+            //energy = energyBase + (POWER PLANT "energyOutput") + (Math.random() * 100);
 
-		    //If the energy difference is negative (not enough power)
-		    if(energyDiff < 0) {
-		    	//Population will decrease no matter what
-		    	tempPopulation = -(Math.random() * 50);
-		    } else {
-		    	//Population change = pollution level with a bit of random change
-		    	tempPopulation = -(pollution * 3) + (Math.random() * 100);
-		    }
+            //Do we have enough energy?
+            reqEnergy = (population * 0.5);
+            //Calculate energy difference for calculating population
+            energyDiff = energy - reqEnergy;
+        }
 
-		    //Update Population
-			population += tempPopulation;
-			console.log("temp pop " + tempPopulation);
+        function populationCount() {
+            //Population
+            //Calculate the rate that the population changes by
 
-		    //Make sure if population is ever a negative number it displays as 0
-			if (population < 0) { 
-				population = 0;
-			}
-		}
+            //If the energy difference is negative (not enough power)
+            if (energyDiff < 0) {
+                //Population will decrease no matter what
+                tempPopulation = -(Math.random() * 50);
+            } else {
+                //Population change = pollution level with a bit of random change
+                tempPopulation = -(pollution * 3) + (Math.random() * 100);
+            }
 
-		function costCount(){
-			//Cost
-		    tempCost = population * 0.1;
-		    cost += tempCost;
-		    console.log("cost " + cost);    
-		}		
-		//-----Nicola's code end
+            //Update Population
+            population += tempPopulation;
+            console.log("temp pop " + tempPopulation);
 
+            //Make sure if population is ever a negative number it displays as 0
+            if (population < 0) {
+                population = 0;
+            }
+        }
 
+        function costCount() {
+            //Cost
+            tempCost = population * 0.1;
+            cost += tempCost;
+            console.log("cost " + cost);
+        }
 
+        /**
+         * Get the total energy generated by all power plants in the game
+         * @returns {number}
+         */
+        function getPlantEnergy() {
+            var totalEnergy = 0;
 
+            for(var i = 0; i < powerPlants.length; i++) {
+                totalEnergy += powerPlants[i].energyOutput;
+            }
 
-
-
-    }])
-;
+            return totalEnergy;
+        }
+    }]);
