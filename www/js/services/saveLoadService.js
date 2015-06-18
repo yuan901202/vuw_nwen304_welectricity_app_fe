@@ -11,10 +11,12 @@ angular.module('welc.services')
          */
         this.saveGame = function (game) {
             //This is the game that is going to be sent to the backend to be saved
-            game.userId = userInfoService.getUserId();
+            game.user_id = userInfoService.getUserId();
 
             return $http.post(host, game).then(function (data) {
                 //Saved successfully
+                return data;
+            }, function(data) {
                 return data;
             });
         };

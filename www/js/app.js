@@ -35,7 +35,13 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                 }, 500);
             });
 
-            GameService.loadGame(saveLoadService.loadGame());
+            saveLoadService.loadGame().then(function(game) {
+                if(game.status != 404) {
+                    GameService.loadGame(game);
+                }
+            }, function() {
+               console.log("Could not load game");
+            });
 
             //Save the game when the user exits the application
             document.addEventListener("pause", saveGame, false);

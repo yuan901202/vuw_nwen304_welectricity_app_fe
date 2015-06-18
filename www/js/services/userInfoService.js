@@ -3,7 +3,8 @@
  */
 angular.module('welc.services')
     .service('userInfoService', ['$http', function ($http) {
-        var username, userId,
+        var username,
+            userId = 1,//TODO: This is 1 until loading user info from the backend is complete
             host = '';
 
         /**
@@ -12,7 +13,7 @@ angular.module('welc.services')
          */
         this.getUserName = function() {
             if (!angular.isDefined(username)) {
-                //Load from the server
+                //TODO: Load from the server
             } else {
                 return userName;
             }
@@ -24,7 +25,8 @@ angular.module('welc.services')
          */
         this.getUserId = function() {
             if (!angular.isDefined(username)) {
-                //Load from the server
+                //TODO: Load from the server
+                return userId;
             } else {
                 return userId;
             }
