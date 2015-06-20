@@ -171,3 +171,7 @@
     visibility: visible;
     transform: translateY(0);
 }
+
+.stars > img {
+    height: 50px;
+}
