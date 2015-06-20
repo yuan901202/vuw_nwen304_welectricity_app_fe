@@ -8,8 +8,9 @@ angular.module('welc.directives', []);
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.directives', 'ngDragDrop'])
-    .run(['$ionicPlatform', '$rootScope', '$state', '$ionicLoading', '$timeout', function ($ionicPlatform, $rootScope, $state, $ionicLoading, $timeout) {
+angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.directives', 'ngDragDrop', 'ngAudio'])
+    .run(['$ionicPlatform', '$rootScope', '$state', '$ionicLoading', '$timeout', 'GameService', 'saveLoadService', 'userInfoService',
+        function ($ionicPlatform, $rootScope, $state, $ionicLoading, $timeout, GameService, saveLoadService, userInfoService) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -32,7 +33,34 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                 $timeout(function() {
                     $ionicLoading.hide();
                 }, 500);
-            })
+            });
+
+            saveLoadService.loadGame().then(function(game) {
+                if(game.status != 404) {
+                    GameService.loadGame(game);
+                }
+            }, function() {
+               console.log("Could not load game");
+            });
+
+            //Save the game when the user exits the application
+            document.addEventListener("pause", saveGame, false);
+
+            /**
+             * This function will save the game.
+             * Use an ajax request as ionic/ cordova will not allow $http on the pause event.
+             */
+            function saveGame() {
+                var game = GameService.getGame();
+                game.user_id = userInfoService.getUserId();
+
+                //Save the game when the user exits
+                $.ajax({
+                    type: "POST",
+                    url: "https://guarded-earth-8421.herokuapp.com/game",
+                    data: game
+                });
+            }
         });
     }])
 

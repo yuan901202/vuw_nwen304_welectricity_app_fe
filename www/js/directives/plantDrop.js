@@ -2,7 +2,7 @@
  * Created by John on 10/05/2015.
  */
 angular.module('welc.directives')
-    .directive('plantDrop', ['GameService', function (GameService) {
+    .directive('plantDrop', ['GameService', 'ngAudio', function (GameService, ngAudio) {
         return {
             scope:{},
             templateUrl: 'templates/plantDrop.html',
@@ -14,6 +14,9 @@ angular.module('welc.directives')
                  * Adds the dropped power plant to the game. Is bound to onDrop event in the template
                  */
                 scope.drop = function () {
+                    //Play a sound
+                    ngAudio.play('sound/Blop.mp3');
+
                     //Remove the previous power plant
                     GameService.removePlant(previous);
                     previous = scope.droppedPlant;

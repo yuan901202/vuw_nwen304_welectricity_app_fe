@@ -2,22 +2,23 @@
  * Created by John on 5/05/2015.
  */
 angular.module('welc.services')
-    .service('GameService', ['$interval', function ($interval) {
+    .service('GameService', ['$interval', 'saveLoadService', function ($interval) {
         var running = false;
         var pollution = 0;  //Should be between 0 - 100
         var population = 100000; //Set initial population to 100, 000
 
-        var stepInterval = 2000;    //Run game logic every 1000 milliseconds
+        var stepInterval = 4000;    //Run game logic every 4000 milliseconds
         var interval;   //This is the interval promise which will run the game
 
         var powerPlants = [];   //All the power plants in the game
+
+        var powerDemand = 10000; //TODO This needs to be updated when the maths of how it works if complete
 
         /**
          * Return the game as an object so that it can be saved.
          * @returns {{population: number, pollution: number, power_demand: number, plants: Array}} - The current game as an object
          */
         this.getGame = function () {
-            var powerDemand = 10000;    //TODO This needs to be updated when the maths of how it works if complete
             return {population: population, pollution: pollution, power_demand: powerDemand, plants: getPowerPlantIds()};
         };
 
@@ -25,9 +26,10 @@ angular.module('welc.services')
          * Set the game variables. This should only be used for loading (or cheating by the devs!)
          * @param game - The game object to load into current game. Should be in the same format that the getGame function returns
          */
-        this.setGame = function(game) {
+        this.loadGame = function(game) {
             population = game.population;
             pollution = game.pollution;
+            powerDemand = game.power_demand;
             powerPlants;    //TODO Load all power plants from a service based on there id. Waiting on service to load all power plants from server.
         };
 
@@ -83,6 +85,9 @@ angular.module('welc.services')
         function stepGame() {
             //Need some fancy algorithm here to calculate all the game state based on the games variables
             console.log("Game calculating......");
+
+            //var powerDemand = 10000;    //TODO This needs to be updated when the maths of how it works if complete
+            //saveLoadService.saveGame({population: population, pollution: pollution, power_demand: powerDemand, plants: getPowerPlantIds()});
         };
 
         /**
