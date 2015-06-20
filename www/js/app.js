@@ -9,8 +9,8 @@ angular.module('welc.directives', []);
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.directives', 'ngDragDrop'])
-    .run(['$ionicPlatform', '$rootScope', '$state', '$ionicLoading', '$timeout', 'GameService', 'saveLoadService',
-        function ($ionicPlatform, $rootScope, $state, $ionicLoading, $timeout, GameService, saveLoadService) {
+    .run(['$ionicPlatform', '$rootScope', '$state', '$ionicLoading', '$timeout', 'GameService', 'saveLoadService', 'userInfoService',
+        function ($ionicPlatform, $rootScope, $state, $ionicLoading, $timeout, GameService, saveLoadService, userInfoService) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -52,7 +52,7 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
              */
             function saveGame() {
                 var game = GameService.getGame();
-                game.user_id = 1;   //TODO get this from a service
+                game.user_id = userInfoService.getUserId();
 
                 //Save the game when the user exits
                 $.ajax({
