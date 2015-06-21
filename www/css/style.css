@@ -128,3 +128,70 @@ a:active {
 .navbar-icon-resize {
 	font-size: 25px;
 }
+
+.hill {
+    width: 50px;
+    position: absolute;
+    top: 100px;
+}
+
+.water {
+    width: 50px;
+    margin-top: 250px;
+    float: right;
+}
+
+.land {
+    width: 50px;
+    position: absolute;
+    top: 400px;
+}
+
+.hill0 {
+    left: 12%;
+}
+
+.hill1 {
+    left: 20%;
+}
+
+.hill2 {
+    left: 35%;
+}
+
+.hill3 {
+    left: 45%;
+}
+
+.hill4 {
+    left: 65%;
+}
+
+.hill5 {
+    left: 80%;
+}
+
+/* Land icon placement */
+.land0 {
+    left: 8%;
+}
+
+.land1 {
+    left: 20%;
+}
+
+.land2 {
+    left: 42%;
+}
+
+.land3 {
+    left: 50%;
+}
+
+.land4 {
+    left: 65%;
+}
+
+.land5 {
+    left: 75%;
+}

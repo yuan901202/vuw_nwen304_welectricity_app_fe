@@ -3,6 +3,7 @@
  */
 angular.module('welc.services')
     .service('GameService', ['$interval', 'saveLoadService', function ($interval) {
+        this.maxPlants = 6;  //The maximum amount of power plants that the game can have
         var running = false;
         var pollution = 0;  //Should be between 0 - 100
         var population = 100000; //Set initial population to 100, 000

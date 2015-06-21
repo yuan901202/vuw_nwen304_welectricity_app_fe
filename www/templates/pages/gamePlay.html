@@ -1,8 +1,18 @@
 <ion-view class="game_play" game-play-script="">
-    <ion-content>
-        <div id="plant1" plant-drop></div>
-        <div id="plant2" plant-drop></div>
-        <div id="plant3" plant-drop></div>
+    <ion-content data-drop="true"
+                 jqyoui-droppable="{onDrop: 'drop', onOut: 'removePlant'}" plant-drop>
+
+        <div ng-repeat="plant in plants | filter:{$: 'Hill'} track by $index">
+            <img class="hill{{$index}} hill" ng-src="{{plant.image}}">
+        </div>
+
+        <div ng-repeat="plant in plants | filter:{location: 'Water'} track by $index">
+            <img class="water{{$index}} water" ng-src="{{plant.image}}">
+        </div>
+
+        <div ng-repeat="plant in plants | filter:{location: 'Land'} track by $index">
+            <img class="land{{$index}} land" ng-src="{{plant.image}}">
+        </div>
     </ion-content>
 
     <ion-footer-bar class="customColours">
