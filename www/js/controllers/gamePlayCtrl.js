@@ -2,8 +2,12 @@
  * Created by John on 10/05/2015.
  */
 angular.module('welc.controllers')
-    .controller('GamePlayCtrl', ['$scope', 'GameService', 'autoSaveService', '$cordovaMedia', function ($scope, GameService, autoSaveService, $cordovaMedia) {
-        var dropSound = new Media('/android_asset/www/sound/Blop.mp3');
+    .controller('GamePlayCtrl', ['$scope', 'GameService', 'autoSaveService', 'MediaService', function ($scope, GameService, autoSaveService, MediaService) {
+        var dropSound;
+
+        MediaService.loadMedia('sound/Blop.mp3').then(function(media) {
+           dropSound = media;
+        });
 
         //Static for now until service for loading them from server is created
         $scope.powerPlants = [
