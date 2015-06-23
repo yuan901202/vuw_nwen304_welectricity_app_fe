@@ -175,3 +175,7 @@
 .stars > img {
     height: 50px;
 }
+
+.popup_icon > img{
+    width: 100px;
+}

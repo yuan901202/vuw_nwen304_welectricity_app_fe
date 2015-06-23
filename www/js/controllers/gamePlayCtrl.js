@@ -8,7 +8,7 @@ angular.module('welc.controllers')
             {name: 'Coal', image: 'img/powerPlants/Coal.png', id: 1, rating: 3},
             {name: 'Wind', image: 'img/powerPlants/Wind.png', id: 2, rating: 4},
             {name: 'Solar', image: 'img/powerPlants/Solar.png', id: 3, rating: 3},
-            {name: 'Hydro', image: 'img/powerPlants/Nuclear.png', id: 4, rating: 5}
+            {name: 'Nuclear', image: 'img/powerPlants/Nuclear.png', id: 4, rating: 5}
         ];
 
         GameService.start();
