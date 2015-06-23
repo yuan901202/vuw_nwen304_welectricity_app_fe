@@ -1,3 +1,19 @@
+/*Changing the header/footer colours*/
+.customColours {
+    color: #ffffff !important; /*Text colour*/
+    background-color: #3f5936 !important; /*Background colour*/
+}
+
+/*Change the colour of the ionicons*/
+.customIcon {
+    color: #ffffff;    
+}
+
+/*Change ionicon colour when active*/
+a:active {
+    color: #88bf74;
+}
+
 .plant_icon {
     width: 50px;
     height: 50px;
