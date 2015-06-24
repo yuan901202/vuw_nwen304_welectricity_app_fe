@@ -14,6 +14,11 @@ angular.module('welc.services')
 
         var powerDemand = 10000; //TODO This needs to be updated when the maths of how it works if complete
 
+        $interval.poll = pollution;
+        $interval.pop = population;
+        $interval.powOut = powerDemand;
+        
+
         /**
          * Return the game as an object so that it can be saved.
          * @returns {{population: number, pollution: number, power_demand: number, plants: Array}} - The current game as an object
