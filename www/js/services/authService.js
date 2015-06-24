@@ -20,8 +20,9 @@ angular.module('welc.services')
          * @param password
          */
         this.register = function(email, username, password) {
-            //Login
-            return $http.post('https://server/user/create').then(function(response) {
+            var postData = {email: email, user_name: username, password: password};
+
+            return $http.post('https://server/user/create', postData).then(function(response) {
                 //Store the access token so that the user does not have to log in every time the app starts
                 $window.localStorage['Token'] = response.data;
                 return 'Success';
