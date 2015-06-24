@@ -1,6 +1,10 @@
 <ion-view class="game_play" game-play-script="">
-    <ion-content data-drop="true" jqyoui-droppable="{onDrop: 'drop', onOut: 'removePlant'}" plant-drop scroll="false">
+    <ion-content class="has-header" data-drop="true" jqyoui-droppable="{onDrop: 'drop', onOut: 'removePlant'}" plant-drop scroll="false">
 
+        <div class="stats">
+            <h1>{{stats.population}}</h1>
+            <h1>{{stats.pollution}}</h1>
+        </div>
         <!-- For each plant type add the plants from the game into the view -->
         <div ng-repeat="plant in plants | filter:{$: 'Hill'} track by $index">
             <img class="hill{{$index}} hill" ng-src="{{plant.image}}">

@@ -6,8 +6,12 @@ angular.module('welc.services')
         this.maxPlants = 6;  //The maximum amount of power plants that the game can have
         var running = false;
 
-        var population = 210000;
-        var pollution = 0;
+        //The stats for the game that can be seen by the user
+        var gameStats = {
+            population: 210000,
+            pollution: 0
+        };
+
         var tempPopulation;
         var cost = 500000;
         var tempCost;
@@ -26,26 +30,30 @@ angular.module('welc.services')
 
         var powerDemand = 10000; //TODO This needs to be updated when the maths of how it works if complete
 
-        $interval.poll = pollution;
-        $interval.pop = population;
-        $interval.powOut = powerDemand;
-        
+        this.stats = function () {
+            return gameStats;
+        };
 
         /**
          * Return the game as an object so that it can be saved.
          * @returns {{population: number, pollution: number, power_demand: number, plants: Array}} - The current game as an object
          */
         this.getGame = function () {
-            return {population: population, pollution: pollution, power_demand: powerDemand, plants: getPowerPlantIds()};
+            return {
+                population: gameStats.population,
+                pollution: gameStats.pollution,
+                power_demand: powerDemand,
+                plants: getPowerPlantIds()
+            };
         };
 
         /**
          * Set the game variables. This should only be used for loading (or cheating by the devs!)
          * @param game - The game object to load into current game. Should be in the same format that the getGame function returns
          */
-        this.loadGame = function(game) {
-            population = game.population;
-            pollution = game.pollution;
+        this.loadGame = function (game) {
+            gameStats.population = game.population;
+            gameStats.pollution = game.pollution;
             powerDemand = game.power_demand;
             powerPlants;    //TODO Load all power plants from a service based on there id. Waiting on service to load all power plants from server.
         };
@@ -101,25 +109,25 @@ angular.module('welc.services')
          */
         function stepGame() {
             //Need some fancy algorithm here to calculate all the game state based on the games variables
-            pollution = pollutionCount();
+            gameStats.pollution = pollutionCount();
 
             energyCount();
             populationCount();
             costCount();
-            update();
+            console.log(gameStats.population);
         };
 
-/**
- * Get the ids of every power plant in the game.
- * @returns {Array} - An array of all ids (integers) of all power plants in the game
- */
-function getPowerPlantIds() {
-    var ids = [];
-    for(var i = 0; i < powerPlants.length; i++) {
-        ids.push(powerPlants[i].id);
-    }
-    return ids;
-}
+        /**
+         * Get the ids of every power plant in the game.
+         * @returns {Array} - An array of all ids (integers) of all power plants in the game
+         */
+        function getPowerPlantIds() {
+            var ids = [];
+            for (var i = 0; i < powerPlants.length; i++) {
+                ids.push(powerPlants[i].id);
+            }
+            return ids;
+        }
 
 
         /**
@@ -130,11 +138,11 @@ function getPowerPlantIds() {
             //pollution = (power plant array pollution code here)
             var totalPollution = 0;
 
-            for(var i = 0; i < powerPlants.length; i++) {
-                pollution += powerPlants[i].pollution;
+            for (var i = 0; i < powerPlants.length; i++) {
+                totalPollution += powerPlants[i].pollution;
             }
 
-            return pollution;
+            return totalPollution;
         }
 
         function energyCount() {
@@ -145,7 +153,7 @@ function getPowerPlantIds() {
             //energy = energyBase + (POWER PLANT "energyOutput") + (Math.random() * 100);
 
             //Do we have enough energy?
-            reqEnergy = (population * 0.5);
+            reqEnergy = (gameStats.population * 0.5);
             //Calculate energy difference for calculating population
             energyDiff = energy - reqEnergy;
         }
@@ -160,22 +168,22 @@ function getPowerPlantIds() {
                 tempPopulation = -(Math.random() * 50);
             } else {
                 //Population change = pollution level with a bit of random change
-                tempPopulation = -(pollution * 3) + (Math.random() * 100);
+                tempPopulation = -(gameStats.pollution * 3) + (Math.random() * 100);
             }
 
             //Update Population
-            population += tempPopulation;
+            gameStats.population += tempPopulation;
             console.log("temp pop " + tempPopulation);
 
             //Make sure if population is ever a negative number it displays as 0
-            if (population < 0) {
-                population = 0;
+            if (gameStats.population < 0) {
+                gameStats.population = 0;
             }
         }
 
         function costCount() {
             //Cost
-            tempCost = population * 0.1;
+            tempCost = gameStats.population * 0.1;
             cost += tempCost;
             console.log("cost " + cost);
         }
@@ -187,7 +195,7 @@ function getPowerPlantIds() {
         function getPlantEnergy() {
             var totalEnergy = 0;
 
-            for(var i = 0; i < powerPlants.length; i++) {
+            for (var i = 0; i < powerPlants.length; i++) {
                 totalEnergy += powerPlants[i].energyOutput;
             }
 

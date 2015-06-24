@@ -3,9 +3,10 @@
  */
 angular.module('welc.controllers')
     .controller('GamePlayCtrl', ['$scope', 'GameService', 'autoSaveService', 'PlantService', 'MediaService', function ($scope, GameService, autoSaveService, PlantService, MediaService) {
+        var dropSound;  //The sound to play when a power plant is dropped into the game
 
         $scope.powerPlants = PlantService.getPowerPlants();
-        var dropSound;
+        $scope.stats = GameService.stats();
 
         //Preload our plant drop sound
         MediaService.loadMedia('sound/Blop.mp3').then(function (media) {
