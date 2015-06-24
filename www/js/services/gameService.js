@@ -10,7 +10,7 @@ angular.module('welc.services')
 
         //The stats for the game that can be seen by the user
         var gameStats = {
-            playerMoney: 0,
+            playerMoney: 500000,
             population: 210000,
             pollution: 0,
             energyNeed: 0,
@@ -18,21 +18,13 @@ angular.module('welc.services')
         };
 
         var tempPopulation;
-        var cost = 500000;
-        var tempCost;
-        var energy;
-        var energyBase = 100000;
-        var fakeEnergyOutput = 10500;
-        var tempEnergy;
 
         var energyDiff;
-        var energyFactor;
 
         var stepInterval = 4000;    //Run game logic every 4000 milliseconds
         var interval;   //This is the interval promise which will run the game
 
         var powerPlants = [];   //All the power plants in the game
-        var reqEnery;
         var powerDemand = 10000; //TODO This needs to be updated when the maths of how it works if complete
 
         this.stats = function () {
@@ -76,7 +68,10 @@ angular.module('welc.services')
          * @param plant - The power plant to add
          */
         this.addPlant = function (plant) {
-            powerPlants.push(plant);
+            if(gameStats.playerMoney > plant.cost) {
+                gameStats.playerMoney -= plant.cost;
+                powerPlants.push(plant);
+            }
         };
 
         /**
@@ -113,14 +108,19 @@ angular.module('welc.services')
          * i.e pollution calculations
          */
         function stepGame() {
-            //Need some fancy algorithm here to calculate all the game state based on the games variables
-            gameStats.pollution = pollutionCount();
+
+            if(gameStats.pollution > pollutionCount()) {
+                //decrease pollution by 5% of total pollution
+                gameStats.pollution -= Math.round(gameStats.pollution * 0.05);
+            } else {
+                //Increase pollution by 10% of plant pollution output
+                gameStats.pollution += Math.round(pollutionCount() * 0.1);
+            }
 
             energyCount();
             populationCount();
             costCount();
-            console.log(gameStats.population);
-        };
+        }
 
         /**
          * Get the ids of every power plant in the game.
@@ -153,12 +153,11 @@ angular.module('welc.services')
         function energyCount() {
             //Energy Output
             //Energy increases based on:
-            //Replace fakeEnergyOutput with the total energy output of power sources
-            energy = energyBase + fakeEnergyOutput + (Math.random() * 100);
-            //energy = energyBase + (POWER PLANT "energyOutput") + (Math.random() * 100);
+            var energy = getPlantEnergy();
 
             //Do we have enough energy?
-            reqEnergy = (gameStats.population * 0.5);
+            var reqEnergy = (gameStats.population * 0.5);
+
             //Calculate energy difference for calculating population
             energyDiff = energy - reqEnergy;
             gameStats.energyNeed = reqEnergy;
@@ -180,7 +179,6 @@ angular.module('welc.services')
 
             //Update Population
             gameStats.population += tempPopulation;
-            console.log("temp pop " + tempPopulation);
 
             //Make sure if population is ever a negative number it displays as 0
             if (gameStats.population < 0) {
@@ -189,12 +187,7 @@ angular.module('welc.services')
         }
 
         function costCount() {
-            //Cost
-            tempCost = gameStats.population * 0.1;
-            cost += tempCost;
-            console.log("cost " + cost);
-
-            gameStats.playerMoney = cost;
+            gameStats.playerMoney += (gameStats.population * 0.1);
         }
 
         /**
@@ -205,7 +198,7 @@ angular.module('welc.services')
             var totalEnergy = 0;
 
             for (var i = 0; i < powerPlants.length; i++) {
-                totalEnergy += powerPlants[i].energyOutput;
+                totalEnergy += powerPlants[i].energy;
             }
 
             return totalEnergy;

@@ -125,7 +125,7 @@ a:active {
     font-size: 25px;
 }
 
-.popup {
+.popup_info {
     position: relative;
     margin-top: 30%;
     visibility: hidden;
@@ -138,12 +138,12 @@ a:active {
     transition-duration: 0.3s;
 }
 
-.popup.is-visible {
+.popup_info.is-visible {
     visibility: visible;
     transform: translateY(0);
 }
 
-.popup.popup_close {
+.popup_info.popup_close {
     position: absolute;
     top: 8px;
     right: 8px;
