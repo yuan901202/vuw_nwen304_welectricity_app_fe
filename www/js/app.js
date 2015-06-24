@@ -54,7 +54,7 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                 });
             }
 
-            if(!AuthService.authenticate()) {
+            if(!AuthService.loggedIn()) {
                 $state.go('Login');
             } else {
                 saveLoadService.loadGame().then(function (game) {
@@ -91,6 +91,11 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
             .state('Login', {
                 url: '/login',
                 templateUrl: 'templates/pages/login.html',
-                controller: 'loginCtrl'
+                controller: 'LoginCtrl'
+            })
+            .state('Register', {
+                url: '/register',
+                templateUrl: 'templates/pages/SignUp.html',
+                controller: 'SignUpCtrl'
             })
     }]);

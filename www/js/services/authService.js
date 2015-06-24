@@ -2,7 +2,7 @@
  * Created by John on 24/06/2015.
  */
 angular.module('welc.services')
-    .service('AuthService', ['$window', '$http', function ($window, $http) {
+    .service('AuthService', ['$window', '$http', '$q', function ($window, $http, $q) {
 
         /**
          * Check if a user is authenticated
@@ -22,11 +22,11 @@ angular.module('welc.services')
         this.register = function(email, username, password) {
             var postData = {email: email, user_name: username, password: password};
 
-            return $http.post('https://server/user/create', postData).then(function(response) {
+            return $http.post('https://server/user/create', postData).success(function(response) {
                 //Store the access token so that the user does not have to log in every time the app starts
                 $window.localStorage['Token'] = response.data;
                 return 'Success';
-            }, function() {
+            }).error(function() {
                 return 'Failed';
             });
         };
@@ -40,11 +40,11 @@ angular.module('welc.services')
          */
         this.login = function(username, password) {
             //Login
-            return $http.post('https://server/login').then(function(response) {
+            return $http.post('https://server/login').success(function(response) {
                 //Store the access token so that the user does not have to log in every time the app starts
                 $window.localStorage['Token'] = response.data;
                 return 'Success';
-            }, function() {
+            }).error(function() {
                 return 'Failed';
             });
         };

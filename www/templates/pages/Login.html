@@ -1,0 +1,18 @@
+<ion-view>
+    <ion-content class="has-header">
+        <!--Template Taken from http://codepen.io/anon/pen/rKwfv-->
+        <div class='form animated flipInX' id="RoundCorners">
+            <h2>Login To Welectricity</h2>
+
+            <input placeholder='Username' type='text' ng-model="username">
+            <input placeholder='Password' type='password' ng-model="password">
+            <a href="PasswordReset.html">Forgot your Password?</a>
+            <button class='animated infinite pulse' ng-click="login(username, password)">Login</button>
+
+            <a ng-click="$state.go('Register')" id="sign_up">
+                <button class='animated infinite pulse' id="sign_up">Sign Up</button>
+            </a>
+
+        </div>
+    </ion-content>
+</ion-view>
