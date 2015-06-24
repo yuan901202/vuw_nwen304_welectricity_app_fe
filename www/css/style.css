@@ -256,5 +256,31 @@ a:active {
 
 .land5 {
     left: 75%;
-> > > > > > > feature-autoDrop
+/*> > > > > > > feature-autoDrop*/
 }
+
+/*GameStats*/
+.stats {
+    width: 30%;
+    background: rgba(255, 255, 255, .5);
+    float: right;
+}
+
+.img-thumbnail {
+    /*background: rgba(255, 255, 255, .5);*/
+    background-color: transparent;
+}
+
+.statsText {
+    font-family: Arial;
+    font-size: 18px;
+}
+
+.iconStyle {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+}
+
+
+

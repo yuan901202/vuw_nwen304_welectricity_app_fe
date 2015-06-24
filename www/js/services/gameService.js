@@ -6,10 +6,15 @@ angular.module('welc.services')
         this.maxPlants = 6;  //The maximum amount of power plants that the game can have
         var running = false;
 
+        
+
         //The stats for the game that can be seen by the user
         var gameStats = {
+            playerMoney: 0,
             population: 210000,
-            pollution: 0
+            pollution: 0,
+            energyNeed: 0,
+            energyMade: 0
         };
 
         var tempPopulation;
@@ -19,7 +24,7 @@ angular.module('welc.services')
         var energyBase = 100000;
         var fakeEnergyOutput = 10500;
         var tempEnergy;
-        var reqEnery;
+
         var energyDiff;
         var energyFactor;
 
@@ -27,7 +32,7 @@ angular.module('welc.services')
         var interval;   //This is the interval promise which will run the game
 
         var powerPlants = [];   //All the power plants in the game
-
+        var reqEnery;
         var powerDemand = 10000; //TODO This needs to be updated when the maths of how it works if complete
 
         this.stats = function () {
@@ -156,6 +161,8 @@ angular.module('welc.services')
             reqEnergy = (gameStats.population * 0.5);
             //Calculate energy difference for calculating population
             energyDiff = energy - reqEnergy;
+            gameStats.energyNeed = reqEnergy;
+            gameStats.energyMade = energy;
         }
 
         function populationCount() {
@@ -186,6 +193,8 @@ angular.module('welc.services')
             tempCost = gameStats.population * 0.1;
             cost += tempCost;
             console.log("cost " + cost);
+
+            gameStats.playerMoney = cost;
         }
 
         /**
