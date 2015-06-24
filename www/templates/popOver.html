@@ -1,0 +1,22 @@
+<div class="popup">
+    <a href="#" class="popup_close" ng-click="hide()">Close</a>
+    <a href="#" class="popup_open" ng-click="showInfo()">Open</a>
+
+    <p>{{plant.name}}</p>
+
+    <div class="stars">
+        <img ng-src="img/stars/star{{plant.rating}}.png">
+    </div>
+
+    <div class="popup_icon">
+        <img src="img/popUpPlants/{{plant.name | uppercase}}.gif">
+    </div>
+</div>
+
+<div class="expand">
+    <a href="#" class="expand-close " ng-click="hideInfo()">Close</a>
+
+    <p>{{plant.name}}!</p>
+    <p>{{plant.info}} </p>
+
+</div>

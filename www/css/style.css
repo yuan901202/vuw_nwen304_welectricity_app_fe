@@ -6,7 +6,7 @@
 
 /*Change the colour of the ionicons*/
 .customIcon {
-    color: #ffffff;    
+    color: #ffffff;
 }
 
 /*Change ionicon colour when active*/
@@ -93,11 +93,6 @@ a:active {
     height: 100vh;
 }
 
-/*.layer, .WEParallax {*/
-    /*margin-left: -30px;*/
-    /*margin-top: -30px;*/
-/*}*/
-
 /* Used for the power plant droppable placeholder */
 .empty_drop {
     border: 2px solid #808080;
@@ -125,6 +120,141 @@ a:active {
     top: 500px;
     left: 250px;
 }
+
 .navbar-icon-resize {
-	font-size: 25px;
+    font-size: 25px;
+}
+
+.popup {
+    position: relative;
+    margin-top: 30%;
+    visibility: hidden;
+    width: 100%;
+    height: 30%;
+    background: #35a785;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(40px);
+    transition-duration: 0.3s;
+}
+
+.popup.is-visible {
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.popup.popup_close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.stars {
+    position: relative;
+    left: -50px;
+    /*top: -100px; */
+}
+
+.iconss {
+    position: relative;
+    max-width: 2px;
+    max-height: 2px;
+    top: -160px;
+    left: 20px;
+}
+
+.expand {
+    position: relative;
+    width: 100%;
+    margin-top: -30%;
+    height: 500px;
+    background: #35a785;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(40px);
+    transition-duration: 0.3s;
+    visibility: hidden;
+}
+
+.expand.is-visible {
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.stars > img {
+    height: 50px;
+}
+
+.popup_icon > img {
+    width: 100px;
+}
+
+.hill {
+    width: 50px;
+    position: absolute;
+    top: 100px;
+}
+
+.water {
+    width: 50px;
+    margin-top: 250px;
+    float: right;
+}
+
+.land {
+    width: 50px;
+    position: absolute;
+    top: 500px;
+}
+
+.hill0 {
+    left: 12%;
+}
+
+.hill1 {
+    left: 20%;
+}
+
+.hill2 {
+    left: 35%;
+}
+
+.hill3 {
+    left: 45%;
+}
+
+.hill4 {
+    left: 65%;
+}
+
+.hill5 {
+    left: 80%;
+}
+
+/* Land icon placement */
+.land0 {
+    left: 8%;
+}
+
+.land1 {
+    left: 20%;
+}
+
+.land2 {
+    left: 42%;
+}
+
+.land3 {
+    left: 50%;
+}
+
+.land4 {
+    left: 65%;
+}
+
+.land5 {
+    left: 75%;
+> > > > > > > feature-autoDrop
 }
