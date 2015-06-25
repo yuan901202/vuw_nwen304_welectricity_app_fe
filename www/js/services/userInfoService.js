@@ -43,6 +43,5 @@ angular.module('welc.services')
                 //Some error
             });
         };
-
     }])
 ;
