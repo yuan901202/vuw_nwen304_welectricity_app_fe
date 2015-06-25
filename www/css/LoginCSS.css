@@ -94,6 +94,8 @@ body::before {
 
 #RoundCorners {
     border-radius: 25px;
+    left: 55%;
+    margin-top: 20%;
 
 }
 
