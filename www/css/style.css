@@ -10,7 +10,11 @@
 }
 
 /*Change ionicon colour when active*/
-a:active {
+.customIcon:active {
+    color: #88bf74;
+}
+
+.customIcon:hover {
     color: #88bf74;
 }
 
