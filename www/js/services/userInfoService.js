@@ -11,7 +11,7 @@ angular.module('welc.services')
          * Get the users username
          * @returns {*} users username
          */
-        this.getUserName = function() {
+        this.getUserName = function () {
             if (!angular.isDefined(username)) {
                 //TODO: Load from the server
             } else {
@@ -23,7 +23,7 @@ angular.module('welc.services')
          * Get the users user id.
          * @returns {*} users userId
          */
-        this.getUserId = function() {
+        this.getUserId = function () {
             if (!angular.isDefined(username)) {
                 //TODO: Load from the server
                 return userId;
@@ -36,12 +36,20 @@ angular.module('welc.services')
          * Change the users username
          * @param userName - The new user name to set
          */
-        this.setUserName = function(userName) {
-            $http.put(host, userName).then(function() {
+        this.setUserName = function (userName) {
+            $http.put(host, userName).then(function () {
                 //Updated ok
-            }, function() {
+            }, function () {
                 //Some error
             });
+        };
+
+        /**
+         * Change the users username
+         * @param userName - The new user name to set
+         */
+        this.setUserId = function (newUserId) {
+            userId = newUserId;
         };
     }])
 ;
