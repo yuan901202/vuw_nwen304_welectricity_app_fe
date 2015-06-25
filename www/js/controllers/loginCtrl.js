@@ -2,7 +2,7 @@
  * Created by John on 24/06/2015.
  */
 angular.module('welc.controllers')
-    .controller('LoginCtrl', ['$scope', 'AuthService', '$ionicLoading', '$ionicPopup', function ($scope, AuthService, $ionicLoading, $ionicPopup) {
+    .controller('LoginCtrl', ['$scope', 'AuthService', '$ionicLoading', '$ionicPopup', '$state', function ($scope, AuthService, $ionicLoading, $ionicPopup, $state) {
 
         $scope.login = function (username, password) {
             $ionicLoading.show({
@@ -11,7 +11,7 @@ angular.module('welc.controllers')
 
             AuthService.login(username, password).then(function () {
                 $ionicLoading.hide();
-
+                $state.go('titlePage');
             }, function () {
                 $ionicLoading.hide();
 

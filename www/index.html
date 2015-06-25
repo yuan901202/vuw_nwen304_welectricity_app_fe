@@ -80,12 +80,13 @@
             </div>
 
             <!-- Settings -->
-            <div>
+            <div ng-show="loggedIn">
                 <button class="button button-icon ion-android-settings customIcon dropdown-toggle dropdown " data-toggle="dropdown">
                     <!--<i class="ion-ios-navigate-outline navbar-icon-resize"></i>-->
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li><a ng-click="$state.go(&apos;titlePage&apos;)" href="#">Exit to Menu</a></li>
+                    <li><a ng-click="$state.go(&apos;titlePage&apos;)" href="#">Log Out</a></li>
                 </ul>
             </div>
         </div>

@@ -2,14 +2,14 @@
  * Created by John on 24/06/2015.
  */
 angular.module('welc.services')
-    .service('AuthService', ['$window', '$http', '$q', function ($window, $http, $q) {
+    .service('AuthService', ['$window', '$http', '$q', '$timeout', function ($window, $http, $q, $timeout) {
 
         /**
          * Check if a user is authenticated
          * @returns {boolean}
          */
         this.loggedIn = function() {
-            return false;
+            return angular.isDefined($window.localStorage['Token']);
         };
 
         /**
@@ -39,6 +39,16 @@ angular.module('welc.services')
          * @returns {*}
          */
         this.login = function(username, password) {
+            //Special case that application is being demoed
+            if(username === 'demo' && password === 'demo') {
+                $window.localStorage['Token'] = 'demo token';
+                var defer = $q.defer();
+                $timeout(function() {
+                    defer.resolve('Success');
+                }, 500);
+                return defer.promise;
+            }
+
             //Login
             return $http.post('https://server/login').success(function(response) {
                 //Store the access token so that the user does not have to log in every time the app starts
@@ -53,6 +63,6 @@ angular.module('welc.services')
          * Log user out
          */
         this.logout = function() {
-            $window.localStorage['Token'] = ''; //Just clear our token
+            $window.localStorage['Token'] = undefined; //Just clear our token
         };
     }]);
