@@ -9,8 +9,8 @@ angular.module('welc.directives', []);
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.directives', 'ngDragDrop', 'ngCordova'])
-    .run(['$ionicPlatform', '$rootScope', '$state', '$ionicLoading', '$timeout', 'GameService', 'saveLoadService', 'userInfoService',
-        function ($ionicPlatform, $rootScope, $state, $ionicLoading, $timeout, GameService, saveLoadService, userInfoService) {
+    .run(['$ionicPlatform', '$rootScope', '$state', '$ionicLoading', '$timeout', 'GameService', 'saveLoadService', 'userInfoService', 'AuthService',
+        function ($ionicPlatform, $rootScope, $state, $ionicLoading, $timeout, GameService, saveLoadService, userInfoService, AuthService) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -35,14 +35,6 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                 }, 500);
             });
 
-            saveLoadService.loadGame().then(function(game) {
-                if(game.status != 404) {
-                    GameService.loadGame(game);
-                }
-            }, function() {
-               console.log("Could not load game");
-            });
-
             //Save the game when the user exits the application
             document.addEventListener("pause", saveGame, false);
 
@@ -61,6 +53,19 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                     data: game
                 });
             }
+
+            if(!AuthService.loggedIn()) {
+                $state.go('Login');
+            } else {
+                saveLoadService.loadGame().then(function (game) {
+                    if (game.status != 404) {
+                        GameService.loadGame(game);
+                    }
+                }, function () {
+                    console.log("Could not load game");
+                });
+            }
+
         });
     }])
 
@@ -82,5 +87,15 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                 url: '/cityView',
                 templateUrl: 'templates/pages/cityView.html',
                 controller: 'CityViewCtrl'
+            })
+            .state('Login', {
+                url: '/login',
+                templateUrl: 'templates/pages/login.html',
+                controller: 'LoginCtrl'
+            })
+            .state('Register', {
+                url: '/register',
+                templateUrl: 'templates/pages/SignUp.html',
+                controller: 'SignUpCtrl'
             })
     }]);
