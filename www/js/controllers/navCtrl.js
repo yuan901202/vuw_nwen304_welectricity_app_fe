@@ -2,7 +2,7 @@
  * Created by John on 13/06/2015.
  */
 angular.module('welc.controllers')
-    .controller('NavCtrl', ['$scope', 'AuthService', '$state', '$rootScope', '$ionicPopup', '$state', function ($scope, AuthService, $state, $rootScope, $ionicPopup, $state) {
+    .controller('NavCtrl', ['$scope', 'AuthService', '$state', '$rootScope', '$ionicPopup', '$state', function ($scope, AuthService, $state, $rootScope, $ionicPopup) {
         $scope.loggedIn = AuthService.loggedIn();
 
         $rootScope.$on('$stateChangeSuccess', function () {
