@@ -107,24 +107,6 @@
     background-size: 100% 100vh;
 }
 
-#plant1 {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-}
-
-#plant2 {
-    position: absolute;
-    top: 150px;
-    left: 200px;
-}
-
-#plant3 {
-    position: absolute;
-    top: 500px;
-    left: 250px;
-}
-
 .navbar-icon-resize {
     font-size: 25px;
 }

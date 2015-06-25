@@ -3,6 +3,6 @@
  */
 
 angular.module('welc.controllers')
-    .controller('CityViewCtrl', ['$scope', function ($scope) {
-
+    .controller('CityViewCtrl', ['$scope', 'GameService', function ($scope, GameService) {
+        $scope.plants = GameService.getPlants();
     }]);

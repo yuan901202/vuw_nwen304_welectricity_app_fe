@@ -2,6 +2,7 @@
     <ion-content class="has-header">
 	        <ul id="scene">
 	        	<!--Hydro plant layer-->
+				<li ng-repeat="plant in plants | filter:{name: 'Hydro'} track by $index" class="layer" data-depth="0.00"><img ng-src="{{plant.image}}" class = "plant_icon"></li>
 	        	<!--li class="layer" data-depth="0.00"><img src="#" class = "WEParallax"></li-->
 		        <li class="layer" data-depth="0.05"><img src="img/City_Parallax/layer11.png" class = "WEParallax"></li>
 		        <li class="layer" data-depth="0.10"><img src="img/City_Parallax/layer10.png" class = "WEParallax"></li>
@@ -10,23 +11,32 @@
 		        <li class="layer" data-depth="0.20"><img src="img/City_Parallax/layer09.png" class = "WEParallax"></li>
 		        <li class="layer" data-depth="0.25"><img src="img/City_Parallax/layer08.png" class = "WEParallax"></li>
 		        <!--Coal plant layer-->
+				<li ng-repeat="plant in plants | filter:{name: 'Coal'} track by $index" class="layer" data-depth="0.30"><img ng-src="{{plant.image}}" class = "plant_icon"></li>
 		        <!--li class="layer" data-depth="0.30"><img src="#" class = "WEParallax"></li-->
 		        <!--Car layer 01-->
 		        <!--li class="layer" data-depth="0.35"><img src="#" class = "WEParallax"></li-->
 		        <li class="layer" data-depth="0.40"><img src="img/City_Parallax/layer07.png" class = "WEParallax"></li>
 		        <li class="layer" data-depth="0.45"><img src="img/City_Parallax/layer06.png" class = "WEParallax"></li>
+
 		        <!--Oil plant layer-->
+				<li ng-repeat="plant in plants | filter:{name: 'Oil'} track by $index" class="layer" data-depth="0.50"><img ng-src="{{plant.image}}" class = "plant_icon"></li>
 		        <!--li class="layer" data-depth="0.50"><img src="#" class = "WEParallax"></li-->
 		        <li class="layer" data-depth="0.55"><img src="img/City_Parallax/layer05.png" class = "WEParallax"></li>
 		        <!--Car layer 02-->
 		        <!--li class="layer" data-depth="0.60"><img src="#" class = "WEParallax"></li-->
+
 		        <!--Nuclear plant layer-->
+				<li ng-repeat="plant in plants | filter:{name: 'Hydro'} track by $index" class="layer" data-depth="0.65"><img ng-src="{{plant.image}}" class = "plant_icon"></li>
 		        <!--li class="layer" data-depth="0.65"><img src="#" class = "WEParallax"></li-->
 		        <li class="layer" data-depth="0.70"><img src="img/City_Parallax/layer04.png" class = "WEParallax"></li>
+
 		        <!--Solar plant layer-->
+				<li ng-repeat="plant in plants | filter:{name: 'Solar'} track by $index" class="layer" data-depth="0.75"><img ng-src="{{plant.image}}" class = "plant_icon"></li>
 		        <!--li class="layer" data-depth="0.75"><img src="#" class = "WEParallax"></li-->
 		        <li class="layer" data-depth="0.80"><img src="img/City_Parallax/layer03.png" class = "WEParallax"></li>
+
 		        <!--Wind plant layer-->
+				<li ng-repeat="plant in plants | filter:{name: 'Wind'} track by $index" class="layer" data-depth="0.85"><img ng-src="{{plant.image}}" class = "plant_icon"></li>
 		        <!--li class="layer" data-depth="0.85"><img src="#" class = "WEParallax"></li-->
 		        <li class="layer" data-depth="0.95"><img src="img/City_Parallax/layer02.png" class = "WEParallax"></li>
 		        <li class="layer" data-depth="1.00"><img src="img/City_Parallax/layer01.png" class = "WEParallax"></li>
