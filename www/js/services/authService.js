@@ -9,7 +9,7 @@ angular.module('welc.services')
          * @returns {boolean}
          */
         this.loggedIn = function() {
-            return angular.isDefined($window.localStorage['Token']);
+            return ($window.localStorage['Token'] !== '');
         };
 
         /**
@@ -63,6 +63,6 @@ angular.module('welc.services')
          * Log user out
          */
         this.logout = function() {
-            $window.localStorage['Token'] = undefined; //Just clear our token
+            $window.localStorage['Token'] = ''; //Just clear our token
         };
     }]);
