@@ -16,12 +16,12 @@ angular.module('welc.services')
         /**
          * Register a new user
          *
-         * @param email
-         * @param username
-         * @param password
+         * @param userEmail
+         * @param userName
+         * @param userPassword
          */
-        this.register = function (email, username, password) {
-            var postData = {email: email, user_name: username, password: password};
+        this.register = function (userEmail, userName, userPassword) {
+            var postData = {email: userEmail, username: userName, password: userPassword};
 
             return $http.post(host + '/user/create', postData).success(function (response) {
                 //Store the access token so that the user does not have to log in every time the app starts
