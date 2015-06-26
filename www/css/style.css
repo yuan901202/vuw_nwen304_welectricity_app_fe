@@ -99,15 +99,16 @@ a:active {
 /*}*/
 
 /* Used for the power plant droppable placeholder */
+/*
 .empty_drop {
     border: 2px solid #808080;
-}
+}*/
 
 .game_play {
     background-image: url('../img/gameplay.png');
     background-size: 100% 100vh;
 }
-
+/*
 #plant1 {
     position: absolute;
     top: 50px;
@@ -127,19 +128,64 @@ a:active {
 }
 .navbar-icon-resize {
 	font-size: 25px;
+}*/
+
+.customIcon2 {
+    color: #ffffff;
+    font-size: 35px;
+    float: right;
+    padding-right: 15px;
+    padding-top: 5px;
 }
 
 .popup {
-    position: relative;
-    margin-top: 30%;
     visibility: hidden;
+    position: absolute;
+    margin-top: 85%;
     width: 100%;
-    height: 30%;
-    background: #35a785;
+    height: 100%;
+    top: 65%;
+    background: #3f5936;
     text-align: center;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(40px);
+    transition-duration: 0.3s;
+}
+
+.popup p{
+    color: #fff;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.popIcon{
+    float: left;
+    max-width: 100px;
+    max-height: 100px;
+    padding-left: 30px;
+}
+
+.expand {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    background: #88bf74;
+    text-align: justify;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     transform: translateY(40px);
     transition-duration: 0.3s;
+    /*overflow-y: hidden;*/
+}
+
+.expand p{
+    padding: 15px;
+    font-color: #fff;
+    color: #3f5936;
+}
+
+.plantPopUp {
+    margin: 5px;
 }
 
 .popup.is-visible {
@@ -170,19 +216,6 @@ a:active {
 }
 
 
-.expand {
-    position: relative;
-    width: 100%;
-    margin-top: -30%;
-    height: 500px;
-    background: #35a785;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(40px);
-    transition-duration: 0.3s;
-    visibility: hidden;
-}
-
 .expand.is-visible {
     visibility: visible;
     transform: translateY(0);
@@ -194,4 +227,15 @@ a:active {
 
 .popup_icon > img{
     width: 100px;
+    background: #88bf74;
+}
+
+.thumbnail{
+    background: #88bf74 !important;
+    border: none;
+}
+
+/*For editing scrollbars*/
+.customContainer{
+    /*overflow-y: auto;*/
 }

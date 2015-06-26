@@ -1,22 +1,27 @@
 <div class="popup">
-    <a href="#" class="popup_close" ng-click="hide()">Close</a>
-    <a href="#" class="popup_open" ng-click="showInfo()">Open</a>
+    <a href="#" class="popup_close" ng-click="hide()"><button class="button button-icon ion-ios-close-outline customIcon2"></button></a>
+    <a href="#" class="popup_open" ng-click="showInfo()"><button class="button button-icon ion-ios-information-outline customIcon2"></button></a>
 
-    <p>{{plant.name}}</p>
+    <div class="customContainer">
+        <p>{{plant.name}}</p>
+            <img class="popIcon" src="img/powerPlants/Coal.png"/>
 
-    <div class="stars">
-        <img ng-src="img/stars/star{{plant.rating}}.png">
+        <div class="stars">
+            <img ng-src="img/stars/star{{plant.rating}}.png">
+        </div>
+
+        </div>
     </div>
-
-    <div class="popup_icon">
-        <img src="img/popUpPlants/{{plant.name}}.gif">
-    </div>
-</div>
 
 <div class="expand">
-    <a href="#" class="expand-close " ng-click="hideInfo()">Close</a>
+    <a href="#" class="expand-close " ng-click="hideInfo()"><button class="button button-icon ion-ios-close-outline customIcon2"></button></a>
+    <div class="customContainer">
+        <p>{{plant.name}}</p>
 
-    <p>{{plant.name}}!</p>
-    <p>{{plant.info}} </p>
+        <div class="popup_icon thumbnail">
+            <img class ="plantPopUp" src="img/popUpPlants/{{plant.name}}.gif">
+        </div>
 
+        <p>{{plant.info}} </p>
+    </div>
 </div>
