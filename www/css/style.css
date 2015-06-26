@@ -48,20 +48,24 @@
 }
 
 .title_button {
-    background-color: transparent;
+    background-color: #3f5936;
     cursor: pointer;
     color: #ffffff;
-    font-family: Futura;
+    font-family: Arial;
     font-size: 40px;
     text-decoration: none;
     margin: 0 auto;
-    border: 0px;
     position: relative;
-    width: 100%;
+    width: 50%;
+    border-radius: 10px;
+    border-style: none;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .title_button_group {
-    top: 380px;
+    top: 47vh;
     text-align: center;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
