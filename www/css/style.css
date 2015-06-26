@@ -286,5 +286,19 @@
     padding: 5px;
 }
 
+@keyframes carsAnimFrame {
+    0% {left: 100px;}
+    100% {left: 500px;}
+}
+
+.carAnim {
+    top: 50px;
+    left: 50px;
+    width: 50px;
+    height: 40px;
+    -webkit- animation-name: carsAnimFrame;
+    -webkit- animation-duration: 10s;
+}
+
 
 
