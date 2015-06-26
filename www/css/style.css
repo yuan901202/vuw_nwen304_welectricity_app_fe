@@ -99,16 +99,16 @@ a:active {
 /*}*/
 
 /* Used for the power plant droppable placeholder */
-/*
+
 .empty_drop {
     border: 2px solid #808080;
-}*/
+}
 
 .game_play {
     background-image: url('../img/gameplay.png');
     background-size: 100% 100vh;
 }
-/*
+
 #plant1 {
     position: absolute;
     top: 50px;
@@ -128,7 +128,7 @@ a:active {
 }
 .navbar-icon-resize {
 	font-size: 25px;
-}*/
+}
 
 .customIcon2 {
     color: #ffffff;
