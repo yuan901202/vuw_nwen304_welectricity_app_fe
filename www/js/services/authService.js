@@ -10,7 +10,12 @@ angular.module('welc.services')
          * @returns {boolean}
          */
         this.loggedIn = function () {
-            return ($window.localStorage['Token'] !== '');
+            if(!$window.localStorage['Token'] || $window.localStorage['Token'] === '') {
+                return false;
+            } else {
+                var loginObj = JSON.parse($window.localStorage['Token']);
+                return !!loginObj.loggedIn;
+            }
         };
 
         /**
@@ -25,8 +30,8 @@ angular.module('welc.services')
 
             return $http.post(host + '/user/create', postData).success(function (response) {
                 //Store the access token so that the user does not have to log in every time the app starts
-                $window.localStorage['Token'] = response.data.token;
-                userInfoService.setUserId(response.data.userId);
+                $window.localStorage['Token'] = JSON.stringify({loggedIn: true, token: response.token});;
+                userInfoService.setUserId(response.userId);
                 return 'Success';
             }).error(function () {
                 return 'Failed';
@@ -43,7 +48,7 @@ angular.module('welc.services')
         this.login = function (username, password) {
             //Special case that application is being demoed
             if (username === 'demo' && password === 'demo') {
-                $window.localStorage['Token'] = 'demo token';
+                $window.localStorage['Token'] = JSON.stringify({loggedIn: true, token: 'demo token'});
                 var defer = $q.defer();
                 $timeout(function () {
                     defer.resolve('Success');
@@ -52,9 +57,9 @@ angular.module('welc.services')
             }
 
             //Login
-            return $http.post('https://server/login').success(function (response) {
+            return $http.post(host + '/login', {userId: userInfoService.getUserId(), username: username, password: password}).success(function (response) {
                 //Store the access token so that the user does not have to log in every time the app starts
-                $window.localStorage['Token'] = response.data;
+                $window.localStorage['Token'] = JSON.stringify({loggedIn: true, token: response.data});
                 return 'Success';
             }).error(function () {
                 return 'Failed';
@@ -62,13 +67,17 @@ angular.module('welc.services')
         };
 
         this.deleteUser = function () {
-            return $http.delete(host + '/user/' + userInfoService.getUserId()).then(function (response) {
+            return $http.delete(host + '/user/' + userInfoService.getUserId()).success(function (response) {
                 //Store the access token so that the user does not have to log in every time the app starts
                 $window.localStorage['Token'] = '';
                 return 'Success';
-            }, function () {
+            }).error(function () {
                 return 'Failed';
             });
+        };
+
+        this.getToken = function() {
+            return $window.localStorage['Token'];
         };
 
         /**

@@ -23,13 +23,18 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
 
             $rootScope.$state = $state;
 
-            $rootScope.$on('$stateChangeStart', function() {
+            $rootScope.$on('$stateChangeStart', function(event, toState, toStateParams, fromState, fromStateParams) {
+                if(toState.name !== 'Login' && !AuthService.loggedIn()) {
+                    event.preventDefault();
+                    $state.go('Login');
+                    alert("Auth to: " + JSON.stringify(toState));
+                }
                 $ionicLoading.show({
                     template: 'Loading.....'
                 });
             });
 
-            $rootScope.$on('$stateChangeSuccess', function() {
+            $rootScope.$on('$stateChangeSuccess', function(event, toState, toStateParams, fromState, fromStateParams) {
                 $timeout(function() {
                     $ionicLoading.hide();
                 }, 500);
@@ -54,13 +59,9 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
                 });
             }
 
-            if(!AuthService.loggedIn()) {
-                $state.go('Login');
-            } else {
+            if(AuthService.loggedIn()) {
                 saveLoadService.loadGame().then(function (game) {
-                    if (game.status != 404) {
-                        GameService.loadGame(game);
-                    }
+                    GameService.loadGame(game.data);
                 }, function () {
                     console.log("Could not load game");
                 });
@@ -90,7 +91,7 @@ angular.module('welc', ['ionic', 'welc.controllers', 'welc.services', 'welc.dire
             })
             .state('Login', {
                 url: '/login',
-                templateUrl: 'templates/pages/login.html',
+                templateUrl: 'templates/pages/Login.html',
                 controller: 'LoginCtrl'
             })
             .state('Register', {

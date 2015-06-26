@@ -13,10 +13,10 @@ angular.module('welc.services')
             //This is the game that is going to be sent to the backend to be saved
             game.user_id = userInfoService.getUserId();
 
-            return $http.post(host, game).then(function (data) {
+            return $http.post(host, game).success(function (data) {
                 //Saved successfully
                 return data;
-            }, function(data) {
+            }).error(function (data) {
                 return data;
             });
         };
@@ -27,13 +27,7 @@ angular.module('welc.services')
          */
         this.loadGame = function () {
             var userId = userInfoService.getUserId();
-            return $http.get(host, {user_id: userId}).then(function (game) {
-                //Saved successfully
-                return game;
-            }, function (error) {
-                //Something went wrong
-                return error;
-            });
+            return $http.get(host + '/' + userId);
         };
     }])
 ;

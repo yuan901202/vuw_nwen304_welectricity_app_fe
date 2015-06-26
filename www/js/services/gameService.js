@@ -2,7 +2,7 @@
  * Created by John on 5/05/2015.
  */
 angular.module('welc.services')
-    .service('GameService', ['$interval', 'saveLoadService', function ($interval) {
+    .service('GameService', ['$interval', 'PlantService', '$rootScope', function ($interval, PlantService, $rootScope) {
         this.maxPlants = 6;  //The maximum amount of power plants that the game can have
         var running = false;
 
@@ -52,7 +52,17 @@ angular.module('welc.services')
             gameStats.population = game.population;
             gameStats.pollution = game.pollution;
             powerDemand = game.power_demand;
-            powerPlants;    //TODO Load all power plants from a service based on there id. Waiting on service to load all power plants from server.
+            var plants = PlantService.getPowerPlants();
+            powerPlants = [];
+
+            for(var i = 0; i < game.plants.length; i++) {
+                for(var j = 0; j < plants.length; j++) {
+                    if(game.plants[i] == plants[j].id) {
+                        powerPlants.push(plants[j]);
+                    }
+                }
+            }
+            $rootScope.$broadcast('GameLoaded');
         };
 
         /**
@@ -178,7 +188,7 @@ angular.module('welc.services')
             }
 
             //Update Population
-            gameStats.population += tempPopulation;
+            gameStats.population += Math.round(tempPopulation);
 
             //Make sure if population is ever a negative number it displays as 0
             if (gameStats.population < 0) {

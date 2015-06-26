@@ -4,7 +4,7 @@
 angular.module('welc.services')
     .service('autoSaveService', ['saveLoadService', 'GameService', '$interval', function (saveLoadService, GameService, $interval) {
 
-        var saveIntervalTime = 180000;  //Time in milliseconds between saves. Default = 3 minutes
+        var saveIntervalTime = 120000;  //Time in milliseconds between saves. Default = 2 minutes
         var saveInterval;
 
         /**

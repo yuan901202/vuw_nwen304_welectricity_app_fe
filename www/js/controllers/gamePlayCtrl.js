@@ -21,6 +21,21 @@ angular.module('welc.controllers')
 
             $scope.plants = GameService.getPlants();
 
+
+            //Ionic caches scope show reload data on enter
+            $scope.$on('$ionicView.enter', function() {
+                console.log('enter');
+                $scope.stats = GameService.stats();
+                $scope.plants = GameService.getPlants();
+            });
+
+            //Load game data when game is loaded
+            $scope.$on('GameLoaded', function() {
+                console.log('enter');
+                $scope.stats = GameService.stats();
+                $scope.plants = GameService.getPlants();
+            });
+
             /**
              * This function is called anytime a power plant is dropped into the gameplay area
              * @param event
